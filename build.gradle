@@ -29,22 +29,23 @@ minecraft {
             properties 'forge.logging.markers': ''
             properties 'forge.logging.console.level': 'debug'
 			arg project.mixin.toBoolean() ? "-mixin.config=${modid}.mixins.json" : ""
-            workingDirectory project.file('run').canonicalPath
-            source sourceSets.main
+            workingDirectory project.file('run')
+            mods { "${modid}" { source sourceSets.main } }
         }
         server = {
             properties 'forge.logging.markers': ''
             properties 'forge.logging.console.level': 'debug'
 			arg project.mixin.toBoolean() ? "-mixin.config=${modid}.mixins.json" : ""
-            workingDirectory project.file('run').canonicalPath
-            source sourceSets.main
+            workingDirectory project.file('run')
+            mods { "${modid}" { source sourceSets.main } }
         }
 		data = {
-            workingDirectory project.file('run')
             property 'forge.logging.markers', ''
             property 'forge.logging.console.level', 'debug'
             args '--mod', modid, '--all', '--output', file('src/generated/resources/'), '--existing', file('src/main/resources/')
-        }
+			workingDirectory project.file('run')
+			mods { "${modid}" { source sourceSets.main } }
+		}
     }
 }
 
@@ -119,3 +120,5 @@ jar {
 					])
     }
 }
+
+jar.finalizedBy('reobfJar')
