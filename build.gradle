@@ -99,10 +99,10 @@ def replaceProperties = [modid: modid,
 						 clientMixins: clientMixins
 						]
 
-if(project.hasProperty('placeboDep')) replaceProperties.put placeboDep, placeboDep
-if(project.hasProperty('curiosVer')) replaceProperties.put curiosVer, curiosVer
-if(project.hasProperty('topVersion')) replaceProperties.put topVersion, topVersion
-if(project.hasProperty('patchouliVer')) replaceProperties.put patchouliVer, patchouliVer
+if(project.hasProperty('placeboDep')) replaceProperties.put 'placeboDep', placeboDep
+if(project.hasProperty('curiosVer')) replaceProperties.put 'curiosVer', curiosVer
+if(project.hasProperty('topVersion')) replaceProperties.put 'topVersion', topVersion
+if(project.hasProperty('patchouliVer')) replaceProperties.put 'patchouliVer', patchouliVer
 
 processResources {
     inputs.properties replaceProperties
