@@ -99,7 +99,19 @@ def replaceProperties = [modid: modid,
 						 clientMixins: clientMixins
 						]
 
-if(project.hasProperty('placeboDep')) replaceProperties.put 'placeboDep', placeboDep
+def depString(depModId, depModVer, mandatory) { 
+	def tomlDepStr = '[[dependencies.' + project.properties.modid + ']]' +
+		'\n    modId=\"' + depModId + '\"' +
+		'\n    mandatory=' + mandatory +
+		'\n    versionRange=\"[' + depModVer + ',)\"' +
+		'\n    ordering=\"NONE\"' +
+		'\n    side=\"BOTH\"'
+	return tomlDepStr
+}
+
+// Placebo dependency is optional, but requires a mods.toml entry, which we don't do for the others.
+if(project.hasProperty('placeboDep')) replaceProperties.put 'placeboDep', depString('placebo', project.properties.placeboDep, 'true')
+else replaceProperties.put 'placeboDep', ''
 if(project.hasProperty('curiosVer')) replaceProperties.put 'curiosVer', curiosVer
 if(project.hasProperty('topVersion')) replaceProperties.put 'topVersion', topVersion
 if(project.hasProperty('patchouliVer')) replaceProperties.put 'patchouliVer', patchouliVer
@@ -140,3 +152,26 @@ jar {
 }
 
 jar.finalizedBy('reobfJar')
+
+task devJar(type: Jar) {
+    from sourceSets.main.output
+	from sourceSets.main.allJava
+    classifier = 'dev'
+    manifest {
+        attributes(["Specification-Title": project.fileName,
+                    "Specification-Vendor": project.author,
+                    "Specification-Version": "1.0", // We are version 1 of ourselves
+                    "Implementation-Title": project.fileName,
+                    "Implementation-Version": project.version,
+                    "Implementation-Vendor" : project.author,
+                    "Implementation-Timestamp": new Date().format("yyyy-MM-dd'T'HH:mm:ssZ"),
+					"MixinConfigs": project.mixin.toBoolean() ? "${modid}.mixins.json" : ""
+					])
+    }
+}
+
+devJar.finalizedBy('reobfJar')
+
+artifacts {
+    archives devJar
+}

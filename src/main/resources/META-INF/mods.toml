@@ -30,9 +30,4 @@ description='''${desc}'''
     ordering="NONE"
     side="BOTH"
 
-[[dependencies.${modid}]]
-    modId="placebo"
-    mandatory=true
-    versionRange="[${placeboDep},)"
-    ordering="NONE"
-    side="BOTH"
+${placeboDep}
