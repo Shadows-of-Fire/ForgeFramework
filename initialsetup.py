@@ -16,7 +16,7 @@ with open("gradle.properties") as propFile:
         properties[name.strip()] = var.strip()
 
 modid = properties['modid']
-fileName = properties['fileName']
+fileName = properties['fileName'] + '.java'
 
 print('Running initial setup for project ' + modid)
 
@@ -30,7 +30,7 @@ with open(fileName, 'r') as mainModClass:
     data = mainModClass.read()
 
 data = data.replace('modid', modid)
-data = data.replace('ModClassRename', fileName)
+data = data.replace('ModClassRename', properties['fileName'])
 
 with open(fileName, 'w') as mainModClass:
     mainModClass.write(data)
