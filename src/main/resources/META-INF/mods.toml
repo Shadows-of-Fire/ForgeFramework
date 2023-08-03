@@ -12,14 +12,14 @@ modId="${modid}" #mandatory
 
 version="${version}" #mandatory
 
-displayName="${displayName}" #mandatory
+displayName="${modName}" #mandatory
 
 description='''${desc}'''
 
-[[dependencies.${modid}]] #optional
-    modId="forge" #mandatory
-    mandatory=true #mandatory
-    versionRange="[${forgeVersion},)" #mandatory
+[[dependencies.${modid}]]
+    modId="forge"
+    mandatory=true
+    versionRange="[${forgeVersion},)"
     ordering="NONE"
     side="BOTH"
 
@@ -29,5 +29,3 @@ description='''${desc}'''
     versionRange="[${mcVersion},)"
     ordering="NONE"
     side="BOTH"
-
-${placeboDep}
