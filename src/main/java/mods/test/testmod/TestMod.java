@@ -1,17 +1,18 @@
-package shadows.modid;
+package mods.test.testmod;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-import net.minecraftforge.fml.common.Mod;
+import net.neoforged.bus.api.IEventBus;
+import net.neoforged.fml.common.Mod;
 
-@Mod(ModClassRename.MODID)
-public class ModClassRename {
+@Mod(TestMod.MODID)
+public class TestMod {
 
     public static final String MODID = "modid";
     public static final Logger LOGGER = LogManager.getLogger(MODID);
 
-    public ModClassRename() {
+    public TestMod(IEventBus bus) {
         LOGGER.info("Hello World");
     }
 
