@@ -9,7 +9,7 @@ import net.neoforged.fml.common.Mod;
 @Mod(TestMod.MODID)
 public class TestMod {
 
-    public static final String MODID = "modid";
+    public static final String MODID = "testmod";
     public static final Logger LOGGER = LogManager.getLogger(MODID);
 
     public TestMod(IEventBus bus) {
