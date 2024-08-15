@@ -1,0 +1,13 @@
+{
+    "required": true,
+    "package": "mods.test.testmod.mixin",
+    "compatibilityLevel": "JAVA_21",
+    "refmap": "testmod.refmap.json",
+    "mixins": [
+
+    ],
+    "client": [
+
+    ],
+    "minVersion": "0.8"
+}

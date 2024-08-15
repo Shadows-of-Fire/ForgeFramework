@@ -1,0 +1,40 @@
+modLoader="javafml"
+
+loaderVersion="[2,)"
+
+license="MIT License"
+
+[[mods]] #mandatory
+
+modId="testmod"
+
+version="1.0.0"
+
+displayName="Test Mod"
+
+authors="TestMan"
+
+description='''A Test mod'''
+
+
+
+[[dependencies.testmod]]
+    modId="minecraft"
+    type="required"
+    versionRange="[1.21.1,)"
+    ordering="NONE"
+    side="BOTH"
+
+[[dependencies.testmod]]
+    modId="neoforge"
+    type="required"
+    versionRange="[21.1.8,)"
+    ordering="NONE"
+    side="BOTH"
+
+[[dependencies.testmod]]
+    modId="placebo"
+    type="required"
+    versionRange="[9.4.1,)"
+    ordering="NONE"
+    side="BOTH"
