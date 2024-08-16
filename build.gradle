@@ -256,7 +256,15 @@ tasks.withType(Jar) {
 
 sourceSets.main.resources {
     srcDir 'src/generated/resources'
-    srcDir 'src/templates'
+}
+
+// Declare an additional sourceset so un-expanded template files are visible in the IDE.
+sourceSets {
+    templates {
+        resources {
+            srcDir 'src/templates'
+        }
+    }
 }
 
 if (!project.enableTests.toBoolean()) {
@@ -275,9 +283,6 @@ tasks.named('jar', Jar).configure {
             "Implementation-Timestamp": new Date().format("yyyy-MM-dd'T'HH:mm:ssZ")
         ])
     }
-    exclude 'neoforge.mods.toml'
-    exclude 'mixins.json'
-    exclude 'coremods.json'
 }
 
 java {
